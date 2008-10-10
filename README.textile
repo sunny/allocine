@@ -20,23 +20,23 @@ h4. Recherche d'un film
 
 La recherche s'effectue avec @Allocine.find_movie@ et renvoie un Hash de l'ID allocine et du titre exact.
 
-<code>
+<pre>
   >> Allocine.find_movie('Plan 9 From Outer Space')
   => {"13031"=>"Plan 9", "136668"=>"Plan 9 from Outer Space"}
-</code>
+</pre>
 
 h4. Recherche d'une série
 
-<code>
+<pre>
   >> Allocine.find_show('xfiles')
   => {"182"=>"X-Files : Aux frontières du réel"}
-</code>
+</pre>
 
 h3. Récupération des informations d'un film/série
 
 h4. Film
 
-<code>
+<pre>
   >> movie = AllocineMovie.new('13031')
   => #<AllocineMovie:0x11fb250 ....>
   >> movie.title
@@ -57,11 +57,11 @@ h4. Film
   => ""
   >> movie.synopsis
   => "Des extraterrestres appliquent le plan 9 destine a manoeuvrer les terriens. Plan diabolique, il consiste a la resurrection des morts en introduisant des electrodes a longue portee stimulant la glande pineale de cadavres recemment enterres."
-</code
+</pre>
 
 h4. Série
 
-<code>
+<pre>
   >> show = AllocineShow.new('182')
   => #<AllocineShow:0x1255908 ...>
   >> show.title
@@ -82,4 +82,4 @@ h4. Série
   => "The X Files"
   >> show.synopsis
   => "Deux agents du FBI sont charg\303\251s d'enqu\303\252ter sur les dossiers non r\303\251solus, appel\303\251s \"X-files\" la plupart du temps des affaires o\303\271 le paranormal entre en jeu. L'agent Fox Mulder, malgr\303\251 le scepticisme de sa co-\303\251quipi\303\250re Dana Scully, tente de prouver sa th\303\250se du complot gouvernement/extra-terrestres...\r\n\r\nFox Mulder n'aura de cesse de rechercher sa soeur disparue des ann\303\251es auparavant lorsqu'il avait 12 ans."
-</code>
+</pre>
