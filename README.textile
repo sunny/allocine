@@ -1,0 +1,85 @@
+h2. Allocine
+
+Allocine consiste en trois classes.
+
+* @Allocine@ : permet de rechercher des films/séries,
+* @AllocineMovie@ qui permet de récupérer toutes les informations sur un film,
+* @AllocineShow@ qui permet de récupérer toutes les information sur les séries.
+
+Une documentation (et un code) plus propre arrive prochainement.
+
+Bug reports : http://webs.lighthouseapp.com/projects/18095-allocine
+
+Mis a disposition sous licence MIT. (c) 2008 Jordan Bracco <jordan@lifeisdead.net>
+
+h3. Recherche
+
+Les recherches s'effectuent avec @Allocine.find_movie@ et @Allocine.find_show@, et renvoie un Hash de l'ID Allocine et du titre exact.
+
+h4. Recherche d'un film
+
+La recherche s'effectue avec @Allocine.find_movie@ et renvoie un Hash de l'ID allocine et du titre exact.
+
+<code>
+  >> Allocine.find_movie('Plan 9 From Outer Space')
+  => {"13031"=>"Plan 9", "136668"=>"Plan 9 from Outer Space"}
+</code>
+
+h4. Recherche d'une série
+
+<code>
+  >> Allocine.find_show('xfiles')
+  => {"182"=>"X-Files : Aux frontières du réel"}
+</code>
+
+h3. Récupération des informations d'un film/série
+
+h4. Film
+
+<code>
+  >> movie = AllocineMovie.new('13031')
+  => #<AllocineMovie:0x11fb250 ....>
+  >> movie.title
+  => "Plan 9"
+  >> movie.original_title
+  => "Plan 9 from Outer Space"
+  >> movie.actors
+  => "Tom Keene, Tor Johnson, Vampira"
+  >> movie.directors
+  => "Ed Wood"
+  >> movie.production_date
+  => "1959"
+  >> movie.genres
+  => "Science fiction, Epouvante-horreur, Fantastique"
+  >> movie.nat
+  => "am\303\251ricain"
+  >> movie.image
+  => ""
+  >> movie.synopsis
+  => "Des extraterrestres appliquent le plan 9 destine a manoeuvrer les terriens. Plan diabolique, il consiste a la resurrection des morts en introduisant des electrodes a longue portee stimulant la glande pineale de cadavres recemment enterres."
+</code
+
+h4. Série
+
+<code>
+  >> show = AllocineShow.new('182')
+  => #<AllocineShow:0x1255908 ...>
+  >> show.title
+  => "X-Files : Aux fronti\303\250res du r\303\251el"
+  >> show.created_by
+  => "Chris Carter"
+  >> show.image
+  => "http://a69.g.akamai.net/n/69/10688/v1/img5.allocine.fr/acmedia/medias/nmedia/18/35/65/25/18600368.jpg"
+  >> show.actors
+  => "Robert Patrick, Annabeth Gish"
+  >> show.nat
+  => "Am\303\251ricaine, canadienne"
+  >> show.duree
+  => "42 mn"
+  >> show.genres
+  => "Fantastique"
+  >> show.original_title
+  => "The X Files"
+  >> show.synopsis
+  => "Deux agents du FBI sont charg\303\251s d'enqu\303\252ter sur les dossiers non r\303\251solus, appel\303\251s \"X-files\" la plupart du temps des affaires o\303\271 le paranormal entre en jeu. L'agent Fox Mulder, malgr\303\251 le scepticisme de sa co-\303\251quipi\303\250re Dana Scully, tente de prouver sa th\303\250se du complot gouvernement/extra-terrestres...\r\n\r\nFox Mulder n'aura de cesse de rechercher sa soeur disparue des ann\303\251es auparavant lorsqu'il avait 12 ans."
+</code>
