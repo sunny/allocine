@@ -16,18 +16,14 @@ class AllocineShow
     }
     str = open(SHOW_DETAIL_URL % id).read.to_s
     data = Iconv.conv('UTF-8', 'ISO-8859-1', str)
-    parsed = {}
     regexps.each do |reg|
       print "#{reg[0]}: " if debug
       r = data.scan Regexp.new(reg[1], Regexp::MULTILINE)
       r = r.first.to_s.strip
       r.gsub!(/<.*?>/, '')
       r.gsub!(/<\/.*?>/, '')
-      parsed.merge!({reg[0].to_sym => "#{r}"})
+      self.instance_variable_set("@#{reg[0]}", r)
       print "#{r}\n" if debug
-    end
-    parsed.each do |k,v|
-      self.instance_variable_set("@#{k}", v)
     end
   end
 end
