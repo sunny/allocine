@@ -8,7 +8,7 @@ class Allocine
       id, klass, name = $1, $2, $3
       data.gsub!("<a href=\"/film/fichefilm_gen_cfilm=#{id}.html\" class=\"link#{klass}\">#{name}</a>", "")
       name.gsub!(/<(.+?)>/,'')
-      films.merge!({id, name})
+      films[id] = name
     end
     films
   end
@@ -22,7 +22,7 @@ class Allocine
       id, klass, name = $1, $2, $3
       data.gsub!("<a href=\"/series/ficheserie_gen_cserie=#{id}.html\" class=\"link#{klass}\">#{name}</a>", "")
       name.gsub!(/<(.+?)>/,'')
-      shows.merge!({id, name})
+      shows[id] = name
     end
     shows
   end
