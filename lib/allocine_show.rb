@@ -13,7 +13,7 @@ class AllocineShow
       :synopsis => '<h5><span style=\'font-weight:bold\'>Synopsis</span>&nbsp;&nbsp;&nbsp;.*?<br />(.*?)</h5>',
       :image => '<td><div id=\'divM\' .*?><img src=\'(.*?)\' style=\'border:1px solid black;.*?>',
     }
-    str = open(SHOW_DETAIL_URL.gsub('__ID__', id)).read.to_s
+    str = open(SHOW_DETAIL_URL % id).read.to_s
     @data = Iconv.conv('UTF-8', 'ISO-8859-1', str)
     @parsed = {}
     regexps.each do |reg|

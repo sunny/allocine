@@ -15,7 +15,7 @@ class AllocineMovie
       :image => '<td valign="top" width="120".*?img src="(.*?)" border="0" alt="" class="affichette" />',
       :interdit => '<h4 style="color: #D20000;">Interdit(.*?)</h4>'
     }
-    str = open(MOVIE_DETAIL_URL.gsub('__ID__', id)).read.to_s
+    str = open(MOVIE_DETAIL_URL % id).read.to_s
     @data = Iconv.conv('UTF-8', 'ISO-8859-1', str)
     @parsed = {}
     regexps.each do |reg|
