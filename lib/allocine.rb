@@ -26,4 +26,14 @@ class Allocine
     end
     return @shows
   end
+  
+  def self.lucky_movie(search)
+    results = self.find_movie(search)
+    return AllocineMovie.new(results.keys.first)
+  end
+  
+  def self.lucky_show(search)
+    results = self.find_show(search)
+    return AllocineShow.new(results.keys.first)
+  end
 end
