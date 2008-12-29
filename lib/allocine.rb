@@ -10,7 +10,7 @@ class Allocine
       name.gsub!(/<(.+?)>/,'')
       films.merge!({id, name})
     end
-    return films
+    films
   end
   
   def self.find_show(search)
@@ -24,16 +24,16 @@ class Allocine
       name.gsub!(/<(.+?)>/,'')
       shows.merge!({id, name})
     end
-    return shows
+    shows
   end
   
   def self.lucky_movie(search)
     results = self.find_movie(search)
-    return AllocineMovie.new(results.keys.first)
+    AllocineMovie.new(results.keys.first)
   end
   
   def self.lucky_show(search)
     results = self.find_show(search)
-    return AllocineShow.new(results.keys.first)
+    AllocineShow.new(results.keys.first)
   end
 end
