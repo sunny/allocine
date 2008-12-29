@@ -14,22 +14,20 @@ class AllocineShow
       :image => '<td><div id=\'divM\' .*?><img src=\'(.*?)\' style=\'border:1px solid black;.*?>',
     }
     str = open(SHOW_DETAIL_URL % id).read.to_s
-    @data = Iconv.conv('UTF-8', 'ISO-8859-1', str)
-    @parsed = {}
+    data = Iconv.conv('UTF-8', 'ISO-8859-1', str)
+    parsed = {}
     regexps.each do |reg|
       print "#{reg[0]}: " if debug
-      r = @data.scan Regexp.new(reg[1], Regexp::MULTILINE)
+      r = data.scan Regexp.new(reg[1], Regexp::MULTILINE)
       r = r.first.to_s.strip
       r.gsub!(/<.*?>/, '')
       r.gsub!(/<\/.*?>/, '')
-      @parsed.merge!({reg[0].to_sym => "#{r}"})
+      parsed.merge!({reg[0].to_sym => "#{r}"})
       print "#{r}\n" if debug
     end
-    @parsed.each do |k,v|
+    parsed.each do |k,v|
       self.instance_variable_set("@#{k}", v)
       self.class.send(:define_method, k, proc{self.instance_variable_get("@#{k}")})
     end
-    @parsed = ""
-    @data = ""
   end
 end
