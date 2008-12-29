@@ -1,5 +1,6 @@
 class AllocineMovie
-  
+  attr_accessor :title, :directors, :nat, :genres, :out_date, :duree, :production_date, :original_title, :actors, :synopsis, :image, :interdit
+
   def initialize(id, debug=false)
     regexps = {
       :title => '<title>(.*?)<\/title>',
@@ -29,7 +30,6 @@ class AllocineMovie
     end
     parsed.each do |k,v|
       self.instance_variable_set("@#{k}", v)
-      self.class.send(:define_method, k, proc{self.instance_variable_get("@#{k}")})
     end
   end
 end
